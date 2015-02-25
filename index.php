@@ -19,8 +19,8 @@
   <![endif]-->
 </head>
 <body ng-controller="gameController" ng-cloak ng-init="shuffle()">
-  <div class="container-fluid">
-    <div class="row"><h1 class="text-center">Gem Dealer <sup>v0.3.3</sup></h1></div>
+  <div class="container">
+    <div class="row"><h1 class="text-center">Gem Dealer <sup>v0.4</sup></h1></div>
     
     <div class="row game-screen">
       <div class="col-xs-5"><?php include 'buy-menu.html'; ?></div>
@@ -31,20 +31,9 @@
   </div>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <div class=" panel panel-default">
-        <div class="panel-heading">Achievements</div>
-        <div class="panel-body">
-          <div class="row achievement-row" ng-repeat="category in categories">
-            <p class="col-xs-12">{{category.categoryName}}</p>
-            <div class="col-xs-1 ach" ng-repeat="achievement in achievements | filter: achievement.category = category.categoryId" ng-show="achievement.category == category.categoryId">
-              <img ng-src="images/{{achievement.image}}" height="50" tooltip="{{achievement.description}}" ng-class="{'fade30' : achievement.granted == false}">
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php include 'achievement-list.html'; ?>
     </div>
   </div>
-  <?php include 'changelist.html'; ?>
   
   <?php include 'modal.html'; ?>
 
