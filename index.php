@@ -46,7 +46,6 @@
   <script src="js/standard-values.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/events.js"></script>
-  <script src="js/achievements.js"></script>
   <script>
     $('[title]').attr('data-toggle', 'tooltip').tooltip({container:'body', html:true});
     $('.play-button').click(function(){$(this).addClass('hidden');$('.game-screen').fadeIn()});

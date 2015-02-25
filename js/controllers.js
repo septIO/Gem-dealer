@@ -20,20 +20,21 @@ app.filter('grantedAchievements', function(){
   }
 })
 
-function gameController($scope, $window, $timeout, $filter){
+function gameController($scope, $window, $timeout, $filter, $http){
   //$scope = localStorage.getItem('game') || $scope;
   $scope.initial = angular.copy(window.game);
   $scope.game = $window.game;
   $scope.gems = $window.gems;
   $scope.yesterday = {};
   $scope.stored = 0;
-  $scope.achievements = $window.achievements;
-  $scope.categories = $window.categories;
+  $scope.achievements = {};
+  $scope.categories = {};
   $scope.Math = $window.Math;
   $scope.amount = 0;
   /*
     The name has been set to '1' to prevent image preload errors.
   */
+  
   $scope.selectedGem = {name:'1'};
   
   $scope.$watch('amount', function(){
@@ -61,6 +62,20 @@ function gameController($scope, $window, $timeout, $filter){
       ach.progress = 0
     });
   });
+  
+  
+  
+  $http.get('json/achievements.json')
+    .then(function(res){
+    $scope.achievements = res.data;
+  });
+  
+  $http.get('json/achievement-categories.json')
+    .then(function(res){
+    $scope.categories = res.data;
+  });
+  
+  
   
   $scope.Save = function(){
     //localStorage.setItem('game', JSON.stringify($scope));
