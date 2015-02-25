@@ -9,5 +9,9 @@
   {
     "categoryId" : "3",
     "categoryName" : "Storage problems"
+  },
+  {
+    "categoryId" : "4",
+    "categoryName" : "Meta achievements"
   }
 ]

@@ -124,5 +124,19 @@
     "category": "3",
     "granted": false,
     "progress": 0
+  },
+  {
+    "name": "test achievement meta",
+    "description": "Should be unlocked when you unlock ach 1 & 2 (buy 1 and 10 gems)",
+    "id": 9,
+    "event": "meta",
+    "requirements": {
+      "meta": [0,1],
+      "amount": [true, true]
+    },
+    "image": "gem-09.gif",
+    "category": "4",
+    "granted": false,
+    "progress": [false, false]
   }
 ]

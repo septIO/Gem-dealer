@@ -18,7 +18,7 @@ app.filter('grantedAchievements', function(){
     if(input.granted) return true;
     return false;
   }
-})
+});
 
 function gameController($scope, $window, $timeout, $filter, $http){
   //$scope = localStorage.getItem('game') || $scope;
@@ -26,9 +26,8 @@ function gameController($scope, $window, $timeout, $filter, $http){
   $scope.game = $window.game;
   $scope.gems = $window.gems;
   $scope.yesterday = {};
-  $scope.stored = 0;
   $scope.achievements = {};
-  $scope.categories = {};
+  $scope.stored = 0;
   $scope.Math = $window.Math;
   $scope.amount = 0;
   /*
@@ -59,9 +58,19 @@ function gameController($scope, $window, $timeout, $filter, $http){
   $scope.$watch('game.day', function(New, old){
     var achs = $filter('filter')($scope.achievements, {granted : false, reset : 'daily'});
     angular.forEach(achs, function(ach){
-      ach.progress = 0
+      ach.progress = 0;
     });
+    if(game.day == game.maxDays+1){
+      var achs = $filter('filter')($scope.achievements, {granted : false, reset : 'game'});
+      angular.forEach(achs, function(ach){
+        ach.progress = 0;
+      });
+    }
   });
+  
+  $scope.$watch('achievements', function(New, old){
+    $scope.updateMetaAchievement();
+  }, true);
   
   
   
@@ -240,7 +249,6 @@ function gameController($scope, $window, $timeout, $filter, $http){
         if(ach.requirements.money === 'available'){
           if($scope.game.money >= ach.requirements.amount) $scope.grantAchievement(ach.id);
         }
-        
       }
       
       if(hasProgress){
@@ -250,6 +258,11 @@ function gameController($scope, $window, $timeout, $filter, $http){
       
       
     })
+  }
+  
+  $scope.updateMetaAchievement = function(){
+    var achs = $filter('filter')($scope.achievements, {granted : false, event : 'meta'});
+    console.log($scope.achievements[1]);
   }
   
   $scope.grantAchievement = function(achievementId){
