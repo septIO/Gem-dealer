@@ -1,0 +1,144 @@
+achievements = [
+  {
+    name : 'test achievement buy 1',
+    description : 'Should be unlocked when you buy a random gem',
+    id : 0,
+    event : 'buy',
+    requirements : {
+      gem : 'any',
+      amount : 1
+    },
+    image : 'gem-0.gif',
+    category : '1',
+    granted : false
+  },
+  {
+    name : 'test achievement buy 10',
+    description : 'Should be unlocked when you buy 10 of a random gem',
+    id : 1,
+    event : 'buy',
+    requirements : {
+      gem : 'any',
+      amount : 10
+    },
+    image : 'gem-01.gif',
+    category : '1',
+    granted : false
+  },
+  {
+    name : 'test achievement buy 100 total',
+    description : 'Should be unlocked when you\'ve bought 100 gems total',
+    id : 2,
+    event : 'buy',
+    requirements : {
+      gem : 'any',
+      amount : 100
+    },
+    image : 'gem-09.gif',
+    category : '1',
+    granted : false,
+    progress : 0,
+    reset : 'game'
+  },
+  {
+    name : 'test achievement sell 10',
+    description : 'Should be unlocked when you sell 10 gems',
+    id : 3,
+    event : 'sell',
+    requirements : {
+      gem : 'any',
+      amount : 10
+    },
+    image : 'gem-09.gif',
+    category : '1',
+    granted : false
+  },
+  {
+    name : 'test achievement sell 100 total',
+    description : 'Should be unlocked when you\'ve sold 100 gems total',
+    id : 4,
+    event : 'sell',
+    requirements : {
+      gem : 'any',
+      amount : 100
+    },
+    image : 'gem-09.gif',
+    category : '1',
+    granted : false,
+    progress : 0,
+    reset : 'game'
+  },
+  {
+    name : 'test achievement buy 10 gem1',
+    description : 'Should be unlocked when you\'ve bought 10 gem1s',
+    id : 5,
+    event : 'buy',
+    requirements : {
+      gem : '1',
+      amount : 10
+    },
+    image : 'gem-09.gif',
+    category : '1',
+    granted : false,
+    progress : 0,
+    reset : 'game'
+  },
+  {
+    name : 'test achievement reach $201',
+    description : 'Should be unlocked when you have atleast $201 available',
+    id : 6,
+    event : 'money',
+    requirements : {
+      money : 'available',
+      amount : 201
+    },
+    image : 'gem-09.gif',
+    category : '2',
+    granted : false,
+  },
+  {
+    name : 'test achievement use $100 in a single day',
+    description : 'Should be unlocked if you use $100 in 1 day',
+    id : 7,
+    event : 'money',
+    requirements : {
+      money : 'spend',
+      amount : 100
+    },
+    image : 'gem-09.gif',
+    category : '2',
+    granted : false,
+    progress : 0,
+    reset : 'daily'
+  },
+  {
+    name : 'test achievement upgrade your storage once',
+    description : 'Should be unlocked if you upgrade your storage once. (adds 10 to the progress for more diversity)',
+    id : 8,
+    event : 'upgrade',
+    requirements : {
+      upgrade : 'storage',
+      amount : 10
+    },
+    image : 'gem-09.gif',
+    category : '3',
+    granted : false,
+    progress : 0
+  }
+  
+];
+
+categories = [
+  {
+    categoryId : '1',
+    categoryName : 'Building up supplies'
+  },
+  {
+    categoryId : '2',
+    categoryName : 'Money, money, money'
+  },
+  {
+    categoryId : '3',
+    categoryName : 'Storage problems'
+  }
+]

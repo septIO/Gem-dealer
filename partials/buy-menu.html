@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading text-center">Gems you can buy</div>
+  <table class="table table-bordered buy-table">
+    <tr>
+      <th title="How the gem looks like">Gem</th>
+      <th title="Amount of gems available">Quantity</th>
+      <th title="Current price">Price</th>
+      <th title="The change between yesterdays and todays prices">Change</th>
+    </tr>
+    <tr ng-repeat="gem in gems" ng-click="setSelectedGem(gem);setAction('Buy');" ng-class="highLightGem(gem)">
+      <td class="text-center"><img ng-src="images/gem-0{{ gem.name }}.gif" height="40"/></td>
+      <td>{{ gem.quantity | number : 0 }}</td>
+      <td>$ {{ gem.price | number : 0 }}</td>
+      <td>{{ calculateChange(gem) }}</td>
+    </tr>
+  </table>
+</div>

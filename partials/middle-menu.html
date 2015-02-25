@@ -1,0 +1,17 @@
+<button class="btn btn-success btn-block" ng-click="shuffle();game.day = game.day + 1;setEvent()">Next day</button>
+<div class="player-info">
+  <b>Bank:</b><p>$ {{ game.money | number : 0 }}</p>
+  <b>Day:</b><p>{{ game.day }} / {{ game.maxDays }}</p>
+  <b>Storage:</b><p>{{ stored }} / {{ game.capacity }}</p>
+  <button class="btn btn-success btn-block" ng-click="buyDay()">Buy 1 day<br />$ {{game.dayCost | number : 0}}</button>
+  <button class="btn btn-success btn-block" ng-click="buyCapacity()">Buy 10 storage<br />$ {{game.storageCost | number : 0}}</button>
+  <div class="well day-info" ng-show="event.gem">
+    <b>{{event.title}}</b>
+    <p><img ng-src="images/gem-0{{event.gem.name}}.gif" height="60" /><br />{{event.text}}</p>
+  </div>
+</div>
+
+</div>
+<div class="col-xs-2 text-center center-block" ng-show="game.day == game.maxDays+1">
+  <button class="btn btn-success btn-block" ng-click="reset()">Play again</button>
+  <p class="lead">Final score:<br />{{game.money | number : 0}}</p>

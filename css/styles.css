@@ -1,0 +1,67 @@
+/* Stop highlight with doubleclicks */
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body, html{
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+.btn:focus{outline: none;}
+.center-block .btn{margin-bottom: 10px;}
+.center-block .btn:last-child{bottom: 0;}
+.center-block{
+  height: 100%;
+  margin-top: 4.3%;
+}
+
+.container{position: relative;}
+.modal-dialog{z-index: 1041;}
+.modal-body{
+  font-size: 2em;
+  line-height: 42px;
+}
+
+.modal-body img{margin-top: -4px;}
+th{
+  width: 25%;
+  text-align: center;
+}
+
+.changelist > ul > li, .changelist > ul > li ul li{font-weight: bold;}
+.changelist ul li{margin-bottom: 5px;}
+.changelist > ul > li{list-style: none;}
+.bg-info{background-color: #d9edf7 !important;}
+.achievement-holder{
+  position: fixed;
+  width: 300px;
+  bottom: 20px;
+  right: 40px;
+}
+
+.achievement img{
+  vertical-align: text-top;
+  float:left;
+  margin-right: 15px;
+}
+
+.ach .tooltip-inner{
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.achievement-row:not(:last-child){
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.fade30{
+  opacity: 0.3
+}

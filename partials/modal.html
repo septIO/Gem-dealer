@@ -1,0 +1,27 @@
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{action}} gems</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          {{amount}} &times; <img ng-src="images/gem-0{{selectedGem.name}}.gif" height="40" />
+        </div>
+        <div class="toolbox text-center">
+
+          <input type="range" step="1" min="0" max="{{maxQuantity(selectedGem, action)}}" ng-model="amount" id="slider">  
+          <p>$ {{calculatePrice(selectedGem, amount, action) | number : 0}}</p>
+          <button class="btn btn-default btn-block" ng-click="amount=maxQuantity(selectedGem, action)">Max</button>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning">Cancel</button>
+        <button type="button" class="btn btn-success" ng-disabled="amount > game.money/selectedGem.price" ng-show="action=='Buy'" ng-click="buy(amount,action)">{{action}}</button>
+        <button type="button" class="btn btn-success" ng-show="action=='Sell'" ng-click="buy(amount,action)">{{action}}</button>
+      </div>
+    </div>
+  </div>
+</div>
