@@ -260,7 +260,7 @@ function gameController($scope, $window, $timeout, $filter, $http){
     })
   }
   
-  $scope.updateMetaAchievement = function(){
+  $scope.updateMetaAchievement = function(){ 
     var achs = $filter('filter')($scope.achievements, {granted : false, event : 'meta'});
     console.log($scope.achievements[1]);
   }
