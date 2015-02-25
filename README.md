@@ -61,7 +61,6 @@ Gem dealer
         <li>Added a new column "change" to the buy table. This column shows the change from yesterdays prices.</li>
         <li>Gems will be highlighted in green if the change is positive, and red if it's negative.</li>
         <li>Added support for future events.</li>
-        <li>From now on you will be able to play legacy games. If you do not like an update, you can find legacy versions <a href="/legacy">here</a>. These versions might have some bugs that will be fixed later.</li>
       </ul>
     <li>Bug fixes</li>
       <ul>
