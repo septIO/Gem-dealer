@@ -30,7 +30,7 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
   $scope.stored = 0;
   $scope.Math = $window.Math;
   $scope.amount = 0;
-  $scope.granted = window.localStorage.getItem('achievements').split(',') || [];
+  $scope.granted = atob(window.localStorage.getItem('achievements')).split(',') || ["-1"];
   /*
     The name has been set to '1' to prevent image preload errors.
   */
@@ -91,7 +91,7 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
   });
   
   save = $interval(function(){
-    localStorage.setItem('achievements', $scope.granted.toString());
+    localStorage.setItem('achievements', btoa($scope.granted.join()));
   }, 2000);
   
   $scope.shuffle = function(){
