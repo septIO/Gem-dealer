@@ -20,7 +20,7 @@ app.filter('grantedAchievements', function(){
   }
 });
 
-function gameController($scope, $window, $timeout, $filter, $http){
+function gameController($scope, $window, $timeout, $filter, $http, $interval){
   //$scope = localStorage.getItem('game') || $scope;
   $scope.initial = angular.copy(window.game);
   $scope.game = $window.game;
@@ -30,6 +30,7 @@ function gameController($scope, $window, $timeout, $filter, $http){
   $scope.stored = 0;
   $scope.Math = $window.Math;
   $scope.amount = 0;
+  $scope.granted = window.localStorage.getItem('achievements').split(',') || [];
   /*
     The name has been set to '1' to prevent image preload errors.
   */
@@ -69,14 +70,19 @@ function gameController($scope, $window, $timeout, $filter, $http){
   });
   
   $scope.$watch('achievements', function(New, old){
-    $scope.updateMetaAchievement();
+    //$scope.updateMetaAchievement();
   }, true);
   
   
   
   $http.get('json/achievements.json')
     .then(function(res){
+    console.log(res);
+    
     $scope.achievements = res.data;
+    angular.forEach(res.data, function(ach){
+      if($scope.granted.indexOf(ach.id.toString()) !== -1) ach.granted = true;
+    });
   });
   
   $http.get('json/achievement-categories.json')
@@ -84,11 +90,9 @@ function gameController($scope, $window, $timeout, $filter, $http){
     $scope.categories = res.data;
   });
   
-  
-  
-  $scope.Save = function(){
-    //localStorage.setItem('game', JSON.stringify($scope));
-  }
+  save = $interval(function(){
+    localStorage.setItem('achievements', $scope.granted.toString());
+  }, 2000);
   
   $scope.shuffle = function(){
     $scope.yesterday = angular.copy($scope.gems);
@@ -142,7 +146,7 @@ function gameController($scope, $window, $timeout, $filter, $http){
   }
   
   $scope.setEvent = function(){
-    var eventArray = ['decrease'];
+    var eventArray = ['decrease', 'increase', 'nothing'];
     var r = eventArray[between(0,eventArray.length-1)];
     var e = {};
     if(r!=='nothing'){
@@ -255,8 +259,6 @@ function gameController($scope, $window, $timeout, $filter, $http){
         if(!updated) ach.progress += event.amount;
         if(ach.progress >= ach.requirements.amount) $scope.grantAchievement(ach.id);
       }
-      
-      
     })
   }
   
@@ -268,6 +270,7 @@ function gameController($scope, $window, $timeout, $filter, $http){
   $scope.grantAchievement = function(achievementId){
     achData = $filter('filter')($scope.achievements[achievementId], {id : achievementId});
     achData.granted = true;
+    $scope.granted.push(achievementId);
   }
   
 }
