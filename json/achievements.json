@@ -1,81 +1,77 @@
 [
   {
-    "name": "test achievement buy 1",
-    "description": "Should be unlocked when you buy a random gem",
+    "name": "Starting to look good",
+    "description": "Buy 100 gems in a single trade.",
     "id": 0,
     "event": "buy",
     "requirements": {
       "gem": "any",
-      "amount": 1
+      "amount": 100
     },
     "image": "gem-0.gif",
     "category": "1",
     "granted": false
   },
   {
-    "name": "test achievement buy 10",
-    "description": "Should be unlocked when you buy 10 of a random gem",
+    "name": "Getting better at this",
+    "description": "Buy 250 gems in a single trade.",
     "id": 1,
     "event": "buy",
     "requirements": {
       "gem": "any",
-      "amount": 10
+      "amount": 250
     },
     "image": "gem-01.gif",
     "category": "1",
     "granted": false
   },
   {
-    "name": "test achievement buy 100 total",
-    "description": "Should be unlocked when you've bought 100 gems total",
+    "name": "Half a ton 'o gems",
+    "description": "Buy 500 gems in a single trade.",
     "id": 2,
     "event": "buy",
     "requirements": {
       "gem": "any",
-      "amount": 100
-    },
-    "image": "gem-09.gif",
-    "category": "1",
-    "granted": false,
-    "progress": 0,
-    "reset": "game"
-  },
-  {
-    "name": "test achievement sell 10",
-    "description": "Should be unlocked when you sell 10 gems",
-    "id": 3,
-    "event": "sell",
-    "requirements": {
-      "gem": "any",
-      "amount": 10
+      "amount": 500
     },
     "image": "gem-09.gif",
     "category": "1",
     "granted": false
   },
   {
-    "name": "test achievement sell 100 total",
-    "description": "Should be unlocked when you've sold 100 gems total",
-    "id": 4,
-    "event": "sell",
+    "name": "Truckload of gems",
+    "description": "Buy 1000 gems in a single trade.",
+    "id": 3,
+    "event": "buy",
     "requirements": {
       "gem": "any",
-      "amount": 100
+      "amount": 1000
     },
     "image": "gem-09.gif",
     "category": "1",
-    "granted": false,
-    "progress": 0,
-    "reset": "game"
+    "granted": false
   },
   {
-    "name": "test achievement buy 10 gem1",
-    "description": "Should be unlocked when you've bought 10 gem1s",
+    "name": "A shitload of gems",
+    "description": "Buy 2000 gems in a single trade.",
+    "id": 4,
+    "event": "buy",
+    "requirements": {
+      "gem": "any",
+      "amount": 2000
+    },
+    "image": "gem-09.gif",
+    "category": "1",
+    "granted": false
+  },
+  {
+    "name": "Local trader",
+    "description": "Buy 500 gems in one game.",
     "id": 5,
     "event": "buy",
     "requirements": {
-      "gem": "1",
-      "amount": 10
+      "gem": "any",
+      "amount": 500
     },
     "image": "gem-09.gif",
     "category": "1",
@@ -84,59 +80,63 @@
     "reset": "game"
   },
   {
-    "name": "test achievement reach $201",
-    "description": "Should be unlocked when you have atleast $201 available",
+    "name": "Cross-border trader",
+    "description": "Buy 1000 gems in one game",
     "id": 6,
-    "event": "money",
+    "event": "buy",
     "requirements": {
-      "money": "available",
-      "amount": 201
+      "gem": "any",
+      "amount": 1000
     },
     "image": "gem-09.gif",
-    "category": "2",
-    "granted": false
-  },
-  {
-    "name": "test achievement use $100 in a single day",
-    "description": "Should be unlocked if you use $100 in 1 day",
-    "id": 7,
-    "event": "money",
-    "requirements": {
-      "money": "spend",
-      "amount": 100
-    },
-    "image": "gem-09.gif",
-    "category": "2",
+    "category": "1",
     "granted": false,
     "progress": 0,
-    "reset": "daily"
+    "reset": "game"
   },
   {
-    "name": "test achievement upgrade your storage once",
-    "description": "Should be unlocked if you upgrade your storage once. (adds 10 to the progress for more diversity)",
+    "name": "Global trader",
+    "description": "Buy 5000 gems in one game.",
+    "id": 7,
+    "event": "buy",
+    "requirements": {
+      "gem": "any",
+      "amount": 5000
+    },
+    "image": "gem-09.gif",
+    "category": "1",
+    "granted": false,
+    "progress": 0,
+    "reset": "game"
+  },
+  {
+    "name": "Galactic trader",
+    "description": "Buy 10 000 gems in one game.",
     "id": 8,
-    "event": "upgrade",
+    "event": "buy",
     "requirements": {
-      "upgrade": "storage",
-      "amount": 10
+      "gem": "any",
+      "amount": 10000
     },
     "image": "gem-09.gif",
-    "category": "3",
+    "category": "1",
     "granted": false,
-    "progress": 0
+    "progress": 0,
+    "reset": "game"
   },
   {
-    "name": "test achievement meta",
-    "description": "Should be unlocked when you unlock ach 1 & 2 (buy 1 and 10 gems)",
+    "name": "Inter-galactic trader",
+    "description": "Buy 25 000 gems in one game",
     "id": 9,
-    "event": "meta",
+    "event": "buy",
     "requirements": {
-      "meta": [0,1],
-      "amount": [true, true]
+      "gem": "any",
+      "amount": 25000
     },
     "image": "gem-09.gif",
-    "category": "4",
+    "category": "1",
     "granted": false,
-    "progress": [false, false]
+    "progress": 0,
+    "reset": "game"
   }
 ]
