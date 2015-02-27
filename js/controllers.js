@@ -92,7 +92,7 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
   
   save = $interval(function(){
     localStorage.setItem('achievements', btoa($scope.granted.join()));
-  }, 2000);
+  }, 30000);
   
   $scope.shuffle = function(){
     $scope.yesterday = angular.copy($scope.gems);
