@@ -69,12 +69,6 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     }
   });
   
-  $scope.$watch('achievements', function(New, old){
-    //$scope.updateMetaAchievement();
-  }, true);
-  
-  
-  
   $http.get('json/achievements.json')
     .then(function(res){
     
@@ -294,11 +288,6 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
         }
       }
     })
-  }
-  
-  $scope.updateMetaAchievement = function(){ 
-    var achs = $filter('filter')($scope.achievements, {granted : false, event : 'meta'});
-    console.log($scope.achievements[1]);
   }
   
   $scope.grantAchievement = function(achievementId){
