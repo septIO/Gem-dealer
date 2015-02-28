@@ -215,7 +215,7 @@
     "reset": "game"
   },
   {
-    "name": "A lesser fortune",
+    "name": "A minor fortune",
     "description": "Reach $ 250,000,000",
     "id": 15,
     "event": "money",

@@ -45,6 +45,7 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     $scope.updateAchievement({
       event : 'money',
       money : 'available',
+      amount : 0
     });
     if(New < old){
       $scope.updateAchievement({
@@ -116,6 +117,26 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
       gems[key] = g;
     });
     $scope.gems = gems;
+  }
+  
+  $scope.achievementTooltip = function(ach){
+    var ret = ach.name;
+    ret += "<hr />";
+    ret += ach.description;
+    if(ach.hasOwnProperty('progress')){
+      ret += "<br />";
+      ret += "<span>";
+      ret += ach.progress;
+      ret += "/";
+      ret += ach.requirements.amount;
+      ret += "</span>";
+    }
+    if(ach.hasOwnProperty('reset') && !ach.granted){
+      ret += '<br /><br />Progress resets ';
+      ret += ach.reset == 'daily' ? 'daily' : 'when the game is restarted';
+    }
+    ret += "<hr/>";
+    return ret;
   }
   
   $scope.buyCapacity = function(){
@@ -243,7 +264,10 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
       var updated = false;
       if(ach.requirements.hasOwnProperty('gem')){
         if(ach.requirements.gem == 'any' || ach.requirements.gem == event.gem){
-          if(event.amount >= ach.requirements.amount) $scope.grantAchievement(ach.id);
+          if(event.amount >= ach.requirements.amount){
+            $scope.grantAchievement(ach.id);
+            ach.progress = ach.requirements.amount;
+          }
           if(hasProgress) {
             ach.progress += parseInt(event.amount);
           }
@@ -264,7 +288,10 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
       
       if(hasProgress){
         if(!updated) ach.progress += event.amount;
-        if(ach.progress >= ach.requirements.amount) $scope.grantAchievement(ach.id);
+        if(ach.progress >= ach.requirements.amount){
+          ach.progress = ach.requirements.amount;
+          $scope.grantAchievement(ach.id);
+        }
       }
     })
   }

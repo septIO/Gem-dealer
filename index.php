@@ -20,6 +20,8 @@
 </head>
 <body ng-controller="gameController" ng-cloak ng-init="shuffle()">
   <div class="container">
+    <progressbar max='100' value='10'></progressbar>
+    
     <div class="row"><h1 class="text-center">Gem Dealer <sup>v0.4</sup></h1></div>
     
     <div class="row game-screen">
@@ -27,7 +29,6 @@
       <div class="col-xs-2 text-center center-block" ng-hide="game.day > game.maxDays"><?php include 'middle-menu.html'; ?></div>
       <div class="col-xs-5"><?php include 'sell-menu.html'; ?></div>
     </div>
-    
   </div>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
