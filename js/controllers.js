@@ -45,7 +45,6 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     $scope.updateAchievement({
       event : 'money',
       money : 'available',
-      amount : 0
     });
     if(New < old){
       $scope.updateAchievement({
