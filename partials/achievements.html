@@ -1,5 +1,5 @@
 <div class="achievement-holder">
-  <div class="panel panel-default achievement" ng-repeat="achievement in achievements | filter: {granted: true}" ng-animate="'animate'">
+  <div class="panel panel-default achievement" ng-repeat="achievement in achievements | filter: {granted: true, local: false}" ng-animate="'animate'">
     <div class="panel-heading">{{ achievement.name }} <span class="close">×</span></div>
     <div class="panel-body">
       <img ng-src="images/{{ achievement.image }}" height="50px">

@@ -77,11 +77,15 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
   
   $http.get('json/achievements.json')
     .then(function(res){
-    console.log(res);
     
     $scope.achievements = res.data;
     angular.forEach(res.data, function(ach){
-      if($scope.granted.indexOf(ach.id.toString()) !== -1) ach.granted = true;
+      if($scope.granted.indexOf(ach.id.toString()) !== -1){
+        ach.granted = true;
+        ach.local = true;
+        return;
+      }
+      ach.local = false;
     });
   });
   
@@ -90,9 +94,13 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     $scope.categories = res.data;
   });
   
-  save = $interval(function(){
-    localStorage.setItem('achievements', btoa($scope.granted.join()));
+  $scope.saveInterval = $interval(function(){
+    $scope.save();
   }, 30000);
+  
+  $scope.save = function(){
+    localStorage.setItem('achievements', btoa($scope.granted.join()));
+  }
   
   $scope.shuffle = function(){
     $scope.yesterday = angular.copy($scope.gems);
@@ -271,6 +279,7 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     achData = $filter('filter')($scope.achievements[achievementId], {id : achievementId});
     achData.granted = true;
     $scope.granted.push(achievementId);
+    $scope.save();
   }
   
 }
