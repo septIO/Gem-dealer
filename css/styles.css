@@ -37,7 +37,6 @@ th{
 .changelist > ul > li, .changelist > ul > li ul li{font-weight: bold;}
 .changelist ul li{margin-bottom: 5px;}
 .changelist > ul > li{list-style: none;}
-.bg-info{background-color: #d9edf7 !important;}
 .achievement-holder{
   position: fixed;
   width: 300px;

@@ -20,7 +20,6 @@
 </head>
 <body ng-controller="gameController" ng-cloak ng-init="shuffle()">
   <div class="container">
-    <progressbar max='100' value='10'></progressbar>
     
     <div class="row"><h1 class="text-center">Gem Dealer <sup>v0.4</sup></h1></div>
     
@@ -48,8 +47,6 @@
   <script src="js/controllers.js"></script>
   <script src="js/events.js"></script>
   <script>
-    $('[title]').attr('data-toggle', 'tooltip').tooltip({container:'body', html:true});
-    $('.play-button').click(function(){$(this).addClass('hidden');$('.game-screen').fadeIn()});
     $('tr:nth-child(1n+2)').attr('data-toggle','modal').attr('data-target','#modal');
     $('.modal-footer button').click(function(){$('#modal').modal('hide')});
     $(document).on('click', '.achievement span', function(){

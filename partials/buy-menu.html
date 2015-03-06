@@ -2,10 +2,10 @@
   <div class="panel-heading text-center">Gems you can buy</div>
   <table class="table table-bordered buy-table">
     <tr>
-      <th title="How the gem looks like">Gem</th>
-      <th title="Amount of gems available">Quantity</th>
-      <th title="Current price">Price</th>
-      <th title="The change between yesterdays and todays prices">Change</th>
+      <th popover="How the gem looks like" popover-append-to-body="true" popover-trigger="mouseenter">Gem</th>
+      <th popover="Amount of gems available" popover-append-to-body="true" popover-trigger="mouseenter">Quantity</th>
+      <th popover="Current price" popover-append-to-body="true" popover-trigger="mouseenter">Price</th>
+      <th popover="The change between yesterdays and todays prices" popover-append-to-body="true" popover-trigger="mouseenter">Change</th>
     </tr>
     <tr ng-repeat="gem in gems" ng-click="setSelectedGem(gem);setAction('Buy');" ng-class="highLightGem(gem)">
       <td class="text-center"><img ng-src="images/gem-0{{ gem.name }}.gif" height="40"/></td>

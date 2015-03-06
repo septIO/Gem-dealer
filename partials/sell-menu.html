@@ -2,10 +2,10 @@
   <div class="panel-heading text-center">Gems you can sell</div>
   <table class="table table-bordered table-hover sell-table">
     <tr>
-      <th title="How the gem looks like">Gem</th>
-      <th title="Amount of gems you currently have in your inventory">Quantity</th>
-      <th title="The price at which you last bought this gem">Bought at</th>
-      <th title="Current demand of this gem. <br />This percentage will be subtracted when sold">Demand</th>
+      <th popover="How the gem looks like" popover-append-to-body="true" popover-trigger="mouseenter">Gem</th>
+      <th popover="Amount of gems you currently have in your inventory" popover-append-to-body="true" popover-trigger="mouseenter">Quantity</th>
+      <th popover="The price at which you last bought this gem" popover-append-to-body="true" popover-trigger="mouseenter">Bought at</th>
+      <th popover-html-unsafe="Current demand of this gem. <br />This percentage will be subtracted when sold" popover-append-to-body="true" popover-trigger="mouseenter">Demand</th>
     </tr>
     <tr ng-repeat="gem in gems" ng-click="setSelectedGem(gem);setAction('Sell')" ng-class="{'bg-info' : event.gem.name == gem.name}">
       <td class="text-center"><img ng-src="images/gem-0{{ gem.name }}.gif" height="40"/></td>

@@ -3,7 +3,18 @@ var controllers = [
 ]
 
 var app = angular.module('gemDealer', ['ui.bootstrap'])
-.controller(controllers);
+.controller(controllers)
+.directive("popoverHtmlUnsafePopup", function () {
+      return {
+        restrict: "EA",
+        replace: true,
+        scope: { title: "@", content: "@", placement: "@", animation: "&", isOpen: "&" },
+        templateUrl: "template/tooltip.tpl.html"
+      };
+})
+.directive("popoverHtmlUnsafe", [ "$tooltip", function ($tooltip) {
+      return $tooltip("popoverHtmlUnsafe", "popover", "click");
+}]);
 
 app.filter('prettyCurrency', function(){
   return function(input){
@@ -15,12 +26,12 @@ app.filter('prettyCurrency', function(){
 
 app.filter('grantedAchievements', function(){
   return function(input){
-    if(input.granted) return true;
-    return false;
+    return input.granted;
   }
 });
 
 function gameController($scope, $window, $timeout, $filter, $http, $interval){
+  // Here be dragons!
   //$scope = localStorage.getItem('game') || $scope;
   $scope.initial = angular.copy(window.game);
   $scope.game = $window.game;
