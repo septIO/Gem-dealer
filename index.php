@@ -12,7 +12,9 @@
   <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  
   <script type="text/javascript" src="js/angular.min.js"></script>
+  <script src="js/loading-bar.js"></script>
   <!--[if IE]>
     <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -46,6 +48,7 @@
   <script src="js/standard-values.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/events.js"></script>
+  
   <script>
     $('tr:nth-child(1n+2)').attr('data-toggle','modal').attr('data-target','#modal');
     $('.modal-footer button').click(function(){$('#modal').modal('hide')});
