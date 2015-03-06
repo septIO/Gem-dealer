@@ -260,7 +260,7 @@
     "reset": "game"
   },
   {
-    "name": "Getting a little cramped in here",
+    "name": "Getting a little cramped inhere",
     "description": "Upgrade your storage",
     "id": 18,
     "event": "upgrade",

@@ -10,12 +10,11 @@ Gem dealer
 
 #Changelog
 <ul>
-  <li>v0.4 (06-03-2015)</li>
+  <li>v0.4 (25-02-2015)</li>
   <ul>
     <li>General:</li>
       <ul>
         <li>Achievements has been implemented. If you have ideas for new, exciting achievements - please message me on GitHub.</li>
-        <li>Redesigned the user interface.</li>
       </ul>
   </ul>
   <li>v0.3.3 (24-02-2015)</li>
