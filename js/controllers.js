@@ -1,35 +1,5 @@
-var controllers = [
-  'gameController'
-]
-
-var app = angular.module('gemDealer', ['ui.bootstrap'])
-.controller(controllers)
-.directive("popoverHtmlUnsafePopup", function () {
-      return {
-        restrict: "EA",
-        replace: true,
-        scope: { title: "@", content: "@", placement: "@", animation: "&", isOpen: "&" },
-        templateUrl: "template/tooltip.tpl.html"
-      };
-})
-.directive("popoverHtmlUnsafe", [ "$tooltip", function ($tooltip) {
-      return $tooltip("popoverHtmlUnsafe", "popover", "click");
-}]);
-
-app.filter('prettyCurrency', function(){
-  return function(input, ignoreIfInInventory, quantity){
-    if((input == '0' && !ignoreIfInInventory) || quantity == '0' || typeof input === 'undefined' ) return '';
-    return '$ ' + input;
-  }
-});
-
-app.filter('grantedAchievements', function(){
-  return function(input){
-    return input.granted;
-  }
-});
-
-function gameController($scope, $window, $timeout, $filter, $http, $interval){
+var app = angular.module('gemDealer', ['ui.bootstrap', 'angular-loading-bar'])
+.controller('gameController', function ($scope, $window, $timeout, $filter, $http, $interval){
   // Here be dragons!
   //$scope = localStorage.getItem('game') || $scope;
   $scope.initial = angular.copy(window.game);
@@ -287,4 +257,28 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     $scope.save();
   }
   
-}
+})
+.directive("popoverHtmlUnsafePopup", function () {
+      return {
+        restrict: "EA",
+        replace: true,
+        scope: { title: "@", content: "@", placement: "@", animation: "&", isOpen: "&" },
+        templateUrl: "template/tooltip.tpl.html"
+      };
+})
+.directive("popoverHtmlUnsafe", ["$tooltip", function ($tooltip) {
+      return $tooltip("popoverHtmlUnsafe", "popover", "click");
+}]);
+
+app.filter('prettyCurrency', function(){
+  return function(input, ignoreIfInInventory, quantity){
+    if((input == '0' && !ignoreIfInInventory) || quantity == '0' || typeof input === 'undefined' ) return '';
+    return '$ ' + input;
+  }
+});
+
+app.filter('grantedAchievements', function(){
+  return function(input){
+    return input.granted;
+  }
+});
