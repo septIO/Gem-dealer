@@ -1,5 +1,5 @@
 var app = angular.module('gemDealer', ['ui.bootstrap', 'angular-loading-bar'])
-.controller('gameController', function ($scope, $window, $timeout, $filter, $http, $interval){
+.controller('gameController', function ($scope, $window, $timeout, $filter, $http, $interval, $rootScope){
   // Here be dragons!
   //$scope = localStorage.getItem('game') || $scope;
   $scope.initial = angular.copy(window.game);
@@ -67,6 +67,8 @@ var app = angular.module('gemDealer', ['ui.bootstrap', 'angular-loading-bar'])
     .then(function(res){
     $scope.categories = res.data;
   });
+  
+  
   
   $scope.saveInterval = $interval(function(){
     $scope.save();
@@ -192,7 +194,8 @@ var app = angular.module('gemDealer', ['ui.bootstrap', 'angular-loading-bar'])
     g = $scope.game;
     if(action == 'Sell'){
       return g.inventory['gem'+gem.name].quantity;
-    } else {
+    } 
+    if(action == 'buy'){
       quantity = 0;
       if(g.money / gem.price >= gem.quantity) quantity = gem.quantity
       if(g.money / gem.price < gem.quantity) quantity = Math.floor(g.money / gem.price);
@@ -257,6 +260,8 @@ var app = angular.module('gemDealer', ['ui.bootstrap', 'angular-loading-bar'])
     $scope.save();
   }
   
+  $rootScope.scope = $scope;
+  
 })
 .directive("popoverHtmlUnsafePopup", function () {
       return {
@@ -268,7 +273,38 @@ var app = angular.module('gemDealer', ['ui.bootstrap', 'angular-loading-bar'])
 })
 .directive("popoverHtmlUnsafe", ["$tooltip", function ($tooltip) {
       return $tooltip("popoverHtmlUnsafe", "popover", "click");
-}]);
+}])
+.controller('ModalController', function($scope, $modal, $rootScope){
+  
+  console.log($rootScope.scope.game.money);
+  
+  $scope.openModal = function(action, gem){
+    
+    var modalInstance = $modal.open({
+      templateUrl : action+'Modal.html',
+      backdrop : true,
+      controller : 'modalInstanceController',
+      resolve : {
+        gem : function(){
+          return angular.copy($rootScope.scope.gems);
+        }
+      }
+    })
+  }
+  
+
+})
+.controller('modalInstanceController', function($scope, $modalInstance, gem){
+  $scope.buy = function(){
+    $modalInstance.close();
+  }
+  $scope.cancel = function(){
+    $modalInstance.dismiss('cancel');
+  }
+  $scope.log = function(l){console.log(l)};
+})
+
+;
 
 app.filter('prettyCurrency', function(){
   return function(input, ignoreIfInInventory, quantity){
@@ -282,3 +318,11 @@ app.filter('grantedAchievements', function(){
     return input.granted;
   }
 });
+
+
+
+
+
+
+
+

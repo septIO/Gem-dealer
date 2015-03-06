@@ -23,7 +23,7 @@
 <body ng-controller="gameController" ng-cloak ng-init="shuffle()">
   <div class="container">
     
-    <div class="row"><h1 class="text-center">Gem Dealer <sup>v0.4</sup></h1></div>
+    <div class="row"><h1 class="text-center">Gem Dealer</h1></div>
     
     <div class="row game-screen">
       <div class="col-xs-5"><?php include 'buy-menu.html'; ?></div>
@@ -37,8 +37,6 @@
     </div>
   </div>
   
-  <?php include 'modal.html'; ?>
-
   <?php include 'achievements.html'; ?>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -50,8 +48,6 @@
   <script src="js/events.js"></script>
   
   <script>
-    $('tr:nth-child(1n+2)').attr('data-toggle','modal').attr('data-target','#modal');
-    $('.modal-footer button').click(function(){$('#modal').modal('hide')});
     $(document).on('click', '.achievement span', function(){
       var obj = $(this).closest('.achievement');
       obj.fadeTo(200, 0, function(){

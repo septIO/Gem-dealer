@@ -1,4 +1,26 @@
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="ModalController">
+  <script type="text/ng-template" id="buyModal.html">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span>&times;</span></button>
+    <h4 class="modal-title">Buy gems {{gem.price}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      {{amount}} &times; <img ng-src="images/gem-0{{gem.name}}.gif" height="40" />
+    </div>
+    <div class="toolbox text-center">
+
+      <input type="range" step="1" min="0" max="{{maxQuantity(gem, 'buy')}}" ng-model="amount" id="slider">  
+      <p>$ {{calculatePrice(gem, amount, 'buy') | number : 0}}</p>
+      <button class="btn btn-default btn-block" ng-click="amount=maxQuantity(gem, 'buy')">Max</button>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" ng-click="cancel();log(gem)">Cancel</button>
+    <button type="button" class="btn btn-success" ng-disabled="amount > game.money/gem.price" ng-click="buy(amount)">Buy</button>
+  </div>
+</script>
   <div class="panel-heading text-center">Gems you can buy</div>
   <table class="table table-bordered buy-table">
     <tr>
@@ -7,7 +29,7 @@
       <th popover="Current price" popover-append-to-body="true" popover-trigger="mouseenter">Price</th>
       <th popover="The change between yesterdays and todays prices" popover-append-to-body="true" popover-trigger="mouseenter">Change</th>
     </tr>
-    <tr ng-repeat="gem in gems" ng-click="setSelectedGem(gem);setAction('Buy');" ng-class="highLightGem(gem)">
+    <tr ng-repeat="gem in gems" ng-click="openModal('buy', gem)" ng-class="highLightGem(gem)">
       <td class="text-center"><img ng-src="images/gem-0{{ gem.name }}.gif" height="40"/></td>
       <td>{{ gem.quantity | number : 0 }}</td>
       <td>$ {{ gem.price | number : 0 }}</td>

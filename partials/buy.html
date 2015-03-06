@@ -1,0 +1,21 @@
+
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()"><span>&times;</span></button>
+        <h4 class="modal-title">Buy gems {{data.gem.price}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          {{amount}} &times; <img src="images/gem-0{{data.gem.name}}.gif" height="40" />
+        </div>
+        <div class="toolbox text-center">
+
+          <input type="range" step="1" min="0" max="{{maxQuantity(data.gem, 'buy')}}" ng-model="amount" id="slider">  
+          <p>$ {{calculatePrice(data.gem, amount, 'buy') | number : 0}}</p>
+          <button class="btn btn-default btn-block" ng-click="amount=maxQuantity(data.gem, 'buy')">Max</button>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        <button type="button" class="btn btn-success" ng-disabled="amount > game.money/data.gem.price" ng-click="buy(amount)">Buy</button>
+      </div>
