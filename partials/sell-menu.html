@@ -10,7 +10,7 @@
     <tr ng-repeat="gem in gems" ng-click="setSelectedGem(gem);setAction('Sell')" ng-class="{'bg-info' : event.gem.name == gem.name}">
       <td class="text-center"><img ng-src="images/gem-0{{ gem.name }}.gif" height="40"/></td>
       <td>{{ game.inventory["gem"+gem.name].quantity | number : 0 }}</td>
-      <td>{{ game.inventory["gem"+gem.name].price | prettyCurrency }}</td>
+      <td>{{ game.inventory["gem"+gem.name].price | prettyCurrency : true : game.inventory["gem"+gem.name].quantity }}</td>
       <td>{{ gem.demand | number : 0 }}%</td>
     </tr>
   </table>

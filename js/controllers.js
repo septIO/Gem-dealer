@@ -17,9 +17,8 @@ var app = angular.module('gemDealer', ['ui.bootstrap'])
 }]);
 
 app.filter('prettyCurrency', function(){
-  return function(input){
-    if(typeof input === 'undefined') return '';
-    if(input == '0') return '';
+  return function(input, ignoreIfInInventory, quantity){
+    if((input == '0' && !ignoreIfInInventory) || quantity == '0' || typeof input === 'undefined' ) return '';
     return '$ ' + input;
   }
 });
@@ -124,26 +123,6 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     $scope.gems = gems;
   }
   
-  $scope.achievementTooltip = function(ach){
-    var ret = ach.name;
-    ret += "<hr />";
-    ret += ach.description;
-    if(ach.hasOwnProperty('progress')){
-      ret += "<br />";
-      ret += "<span>";
-      ret += ach.progress;
-      ret += "/";
-      ret += ach.requirements.amount;
-      ret += "</span>";
-    }
-    if(ach.hasOwnProperty('reset') && !ach.granted){
-      ret += '<br /><br />Progress resets ';
-      ret += ach.reset == 'daily' ? 'daily' : 'when the game is restarted';
-    }
-    ret += "<hr/>";
-    return ret;
-  }
-  
   $scope.buyCapacity = function(){
     if($scope.game.money >= $scope.game.storageCost){
       $scope.game.money -= $scope.game.storageCost;
@@ -228,7 +207,7 @@ function gameController($scope, $window, $timeout, $filter, $http, $interval){
     if(g.day == 1 || g.day > g.maxDays) return;
     if(typeof $scope.event.gem !="undefined" && $scope.event.gem.name == gem.name) return  'bg-info';
     if(gem.price - lastGem.price > 0) return 'bg-success';
-    if(gem.price - lastGem.price < 0) return 'bg-danger';
+    if(gem.price - lastGem.price <= 0) return 'bg-danger';
   }
   
   $scope.calculateChange = function(gem){

@@ -16,10 +16,6 @@ body, html{
 .btn:focus{outline: none;}
 .center-block .btn{margin-bottom: 10px;}
 .center-block .btn:last-child{bottom: 0;}
-.center-block{
-  height: 100%;
-  margin-top: 4.3%;
-}
 
 .container{position: relative;}
 .modal-dialog{z-index: 1041;}

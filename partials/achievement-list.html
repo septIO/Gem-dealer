@@ -3,8 +3,8 @@
   <div class="panel-body">
     <div class="row achievement-row" ng-repeat="category in categories">
       <p class="col-xs-12">{{category.categoryName}}</p>
-      <div class="col-xs-1 ach" ng-repeat="achievement in achievements | filter: achievement.category = category.categoryId" ng-show="achievement.category == category.categoryId">
-        <img ng-src="images/{{achievement.image}}" height="50" popover-html-unsafe="{{achievementTooltip(achievement)}}" popover-append-to-body="true" popover-trigger="mouseenter" ng-class="{'fade30' : achievement.granted == false}">
+      <div class="col-xs-1 ach" ng-repeat="achievement in achievements" ng-show="achievement.category == category.categoryId">
+        <img ng-src="images/{{achievement.image}}" height="50" popover-html-unsafe="{{achievement.description}}" popover-title="{{achievement.name}}" popover-append-to-body="true" popover-trigger="mouseenter" ng-class="{'fade30' : !achievement.granted}">
       </div>
     </div>
   </div>
